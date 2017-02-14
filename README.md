@@ -24,4 +24,4 @@
 
 5、目前项目中所有的数据交互都是通过模板渲染，每次都需要重新加载整个页面，我想大家都知道有ajax的存在，最近正在整体修改，实现数据的局部刷新
 
-三、实现ajax弹框添加更新数据，传送：https://github.com/hddck/user-management-node
+三、实现模板渲染，传送：https://github.com/hddck/user-management-node
