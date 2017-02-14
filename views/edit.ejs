@@ -1,0 +1,111 @@
+<%- include header %>
+
+<!--路径导航-->
+<ol class="breadcrumb">
+    <li><a href="/">首页</a></li>
+    <li><a href="#" onClick="javascript :history.back(-1)">返回上一页</a></li>
+    <li><a href="#">当前位置: </a></li>
+    <li class="active"><%= name %></li>
+</ol>
+
+<form class="form-signin " role="form" method="GET" id="filterForm">
+    <h3>请输入要查找的信息：</h3>
+    <dl>
+        <dt class="form__line">
+            <span>按姓名查找：</span>
+            <input type="text" class="form-control form-add" name="name">
+        </dt>
+        <dt class="form__line">
+            <span>按性别查找：</span>
+            <input type="text" class="form-control form-add" name="sex">
+        </dt>
+        <dt class="form__line">
+            <span>按年龄查找：</span>
+            <input type="text" class="form-control form-add" name="age">
+        </dt>
+        <dt class="form__line">
+            <span>按电话查找：</span>
+            <input type="text" class="form-control form-add" name="tel">
+        </dt>
+    </dl>
+
+    <div class="a-btn">
+        <a href="javascript:;" class = "find" ><input type="button" class="btn btn-lg btn-primary btn-block" value="查找"></a>
+        <a href="javascript:;" data-toggle="modal" data-target="#addDialog"><input class="btn btn-lg btn-primary btn-block" type="button" id="btn" value="添加" /></a>
+    </div>
+</form>
+<p style="text-align: center;margin-top: 30px;">温馨提示：填写的数据越多，查找的越准确哦</p>
+
+
+<!-- 表格 -->
+<div class="container-table">
+    <h2 class="form-signin-heading">学生信息</h2>
+    <table class=" table table-bordered j-userTable">
+        <thead>
+        <tr>
+            <th class="text-center">姓名</th>
+            <th class="text-center">性别</th>
+            <th class="text-center">年龄</th>
+            <th class="text-center">联系方式</th>
+            <th class="text-center">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+</div>
+
+    <!-- 增加添加数据弹出框 -->
+    <div class="modal fade" role="dialog" id="addDialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">添加数据</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-signin" role="form" method="POST" id="addForm">
+                        <input type="text" class="form-control" id="name" name = "name" placeholder="姓名" required autofocus autocomplete="off">
+                        <input type="text" class="form-control" id="sex" name = "sex" placeholder="性别" required autocomplete="off">
+                        <input type="text" class="form-control" id="age" name = "age" placeholder="年龄" required autocomplete="off">
+                        <input type="text" class="form-control" id="tel" name = "tel" placeholder="联系方式" required autocomplete="off">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary j-addButton">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 增加更新数据弹出框 -->
+    <div class="modal fade" role="dialog" id="updateDialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">更新数据</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-signin" role="form" method = "POST" id="updateForm">
+                        <input type="text" class="form-control" id="name" name = "name"  autofocus autocomplete="off" required>
+                        <input type="text" class="form-control" id="sex" name = "sex"  autocomplete="off" required>
+                        <input type="text" class="form-control" id="age" name = "age"  autocomplete="off" required>
+                        <input type="text" class="form-control" id="tel" name = "tel"  autocomplete="off" required>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary j-updateButton">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include footer %>
+
+<script src="/javascripts/edit.js"></script>
+
