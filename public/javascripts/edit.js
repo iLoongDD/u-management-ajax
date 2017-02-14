@@ -81,7 +81,7 @@ $(".j-addButton").click(function(){
       dataType: "json",
       success: function (data) {
         if (data.flag) {
-          window.location.reload();
+          queryList();
           $("#updateDialog").modal("hide");
         } else {
           alert("更新失败，请待会重试");
@@ -118,7 +118,7 @@ function queryList(pram){
                 '<a href="javascript:;" class="update" _id="'+data.item[i]._id+'" > <input type="button" class="btn btn-style " value="更新"></a>'+
                 '</td>'+
                 '</tr>'
-            $(".j-userTable tbody").empty().append(html);
+            $(".j-userTable tbody").empty().prepend(html);
           }
         }
       }else{
