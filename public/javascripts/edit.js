@@ -100,13 +100,12 @@ $(".j-addButton").click(function(){
 })();
 
 //函数获取数据
-function queryList(pram){
-  var _pram = pram || {};
+function queryList(pram){  
   $.ajax({
     url: "/api/edit",
     type: "get",
     dataType: "json",
-    data: _pram,
+    data: pram,
     success: function(data){
       if(data.flag){
         var html = "";
