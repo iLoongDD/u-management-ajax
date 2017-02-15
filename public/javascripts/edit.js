@@ -99,7 +99,7 @@ $(".j-addButton").click(function(){
   });
 })();
 
-//函数获取数据
+//获取数据的函数
 function queryList(pram){  
   $.ajax({
     url: "/api/edit",
