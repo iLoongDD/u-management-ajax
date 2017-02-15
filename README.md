@@ -24,6 +24,6 @@
 
  注意：我的项目并没有注册，而是直接用账号：admin 密码：123456直接登录，有想法的可以自己搞个注册上去，也不费事
 
-5、目前项目中所有的数据交互都是通过模板渲染，每次都需要重新加载整个页面，我想大家都知道有ajax的存在，最近正在整体修改，实现数据的局部刷新
+5、我想大家都知道有ajax的存在，该项目已实现完全用ajax局部刷新
 
-三、实现模板渲染，传送：https://github.com/hddck/user-management-node
+三、用模板渲染数据，传送：https://github.com/hddck/user-management-node
