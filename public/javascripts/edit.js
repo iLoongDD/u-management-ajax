@@ -1,13 +1,21 @@
 
+//监听返回事件
+window.onpopstate=function() {
+  urlQuery();
+};
+
 //获取列表
 (function() {
-  queryList();
+  urlQuery();
 })();
 
 //查找
 $(".find").click(function(){
   var pram = $("#filterForm").serializeArray();
+  var query = $("#filterForm").serialize();
+  var url =  window.location.href.split("?")[0];
   queryList(pram);
+  window.history.pushState({},"",url + "?" + encodeURI(query));
 });
 
 //删除
@@ -39,10 +47,10 @@ $(".j-addButton").click(function(){
     type: 'post',
     dataType: "json",
     success: function (data) {
-      if (data.flag) {
+      if(data.flag) {
         queryList();
         $("#addDialog").modal("hide");
-      } else {
+      }else {
         alert("增加失败，请待会重试");
       }
     }
@@ -105,7 +113,7 @@ function queryList(pram){
         if(!data.item.length){
           html =  '<h2  style="text-align: center; margin-top: 100px;">'+'暂时无相关记录，请点击添加'+'</h2>'
           $(".j-userTable tbody").empty();
-          $(".j-userTable").after(html);
+          $(".container-table .tips").empty().prepend(html);
         }else{
           for(var i= 0; i<data.item.length;i++ ){
             html += '<tr>'+
@@ -128,3 +136,41 @@ function queryList(pram){
   })
 }
 
+
+//获取URL参数的函数
+function GetQueryString(name) {
+  var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+  var r = window.location.search.substr(1).match(reg);
+  if(r!=null){
+    return decodeURI(unescape(r[2]));
+  }
+  return null;
+}
+
+//URL查询函数
+function urlQuery(){
+  var pram = {},
+      _name = GetQueryString("name"),
+      _sex = GetQueryString("sex"),
+      _age = GetQueryString("age"),
+      _tel = GetQueryString("tel");
+
+  $("#filterForm input[name=name]").val(_name);
+  $("#filterForm input[name=sex]").val(_sex);
+  $("#filterForm input[name=age]").val(_age);
+  $("#filterForm input[name=tel]").val(_tel);
+
+  if(_name){
+    pram.name=_name;
+  }
+  if(_sex){
+    pram.sex=_sex;
+  }
+  if(_age){
+    pram.age=_age;
+  }
+  if(_tel){
+    pram.tel=_tel;
+  }
+  queryList(pram);
+}
