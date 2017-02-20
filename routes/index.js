@@ -72,19 +72,17 @@ module.exports = function(app) {
    });
 
    //添加
-   app.post('/api/add', function(req, res) {
-        var data = {};
-        var model = new studentModel(req.body);
-            model.save(function(err, result) {
-                if(err){
-                    console.log(err);
-                }
-                data.flag = true;
-                data.item = result;
-                res.send(data);
-            });
-
-   });
+  app.post('/api/add', function (req, res) {
+    const data = {};
+    const studentEntity = new studentModel(req.body);
+    studentEntity.save().then(function () {
+      data.flag = true;
+      res.send(data);
+    }).catch(function(e) {
+      data.msg = e;
+      res.send(data);
+    });
+  });
 
    //删除
    app.get('/api/del', function(req, res) {
