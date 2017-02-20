@@ -39,22 +39,28 @@ $(".j-userTable").on("click",".delete",function(){
 });
 
 //增加
-$(".j-addButton").click(function(){
-  var person = $("#addForm").serialize();
+$('.j-addButton').click(function() {
+  const person = $('#addForm').serialize();
   $.ajax({
-    url: "/api/add",
+    url: '/api/add',
     data: person,
     type: 'post',
-    dataType: "json",
+    dataType: 'json',
     success: function (data) {
-      if(data.flag) {
+      if (data.flag) {
+        alert('添加成功');
         queryList();
-        $("#addDialog").modal("hide");
-      }else {
-        alert("增加失败，请待会重试");
+        $('#addDialog').modal('hide');
+      } else {
+        let html = '';
+        data.msg.errors.name && (html += '请填写姓名.');
+        data.msg.errors.age && (html += '年龄必须在7-45之间.');
+        data.msg.errors.sex && (html += '性别只能是男或女.');
+        data.msg.errors.tel && (html += '请填写正确的号码.');
+        alert(html);
       }
-    }
-  })
+    },
+  });
 });
 
 //更新
