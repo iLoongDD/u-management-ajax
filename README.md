@@ -6,7 +6,7 @@
 
 2、进入项目路径cd u-management&&npm install,安装所需要的模块
 
-3、进入mongodb的bin目录下启动数据库，cd bin , mongod --dbpath ../u-management/(设置u-management文件夹为我们工程的存储目录并启动数据库，所以你得先建一个u-management文件夹，如果不是在mongodb路径下，记得修改上面的文件夹路径)
+3、进入mongodb的bin目录下启动数据库(具体查询mongodb的使用)。如果创建了mongodb的服务，也可以直接用 npm run db 来启动数据库(package已配置了命令)。
 
 4、数据库准备好了，启动项目 npm start，在浏览器输入localhost:3000查看（首页只有一个人员管理是可以点击的，其他的只是为美观，大家无视）
 
